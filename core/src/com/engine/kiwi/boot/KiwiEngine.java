@@ -1,4 +1,4 @@
-package com.engine.kiwi;
+package com.engine.kiwi.boot;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;

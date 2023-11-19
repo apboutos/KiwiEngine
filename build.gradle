@@ -26,6 +26,9 @@ allprojects {
         ashleyVersion = '1.7.4'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.2.1'
+        junitVersion = '5.10.0'
+        mockitoVersion = '5.7.0'
+        assertjVersion = '3.24.2'
     }
 
     repositories {
@@ -53,10 +56,13 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java-library"
-
+    sourceSets.test.java.srcDirs = ["test/"]
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        
+        testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+        testImplementation "org.mockito:mockito-core:$mockitoVersion"
+        testImplementation "org.assertj:assertj-core:$assertjVersion"
     }
 }
