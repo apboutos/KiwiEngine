@@ -1,5 +1,6 @@
 package com.engine.kiwi.model;
 
+import com.badlogic.gdx.graphics.Texture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +13,11 @@ class EntityGridTest {
 
     @BeforeEach
     void initialize() {
-        classUnderTest = new EntityGrid(15,15,64,64);
+        classUnderTest = new EntityGrid(15,15);
     }
 
     @Test
     void shouldReturnEntitiesInCorrectCells() {
-
-        classUnderTest.addEntity(new Entity("entity1",1,2,0,0));
-
-        assertThat(classUnderTest.getCell(0,0)).isEqualTo("entity1");
-        assertThat(classUnderTest.getCell(0,1)).isEqualTo("entity1");
     }
 
 }

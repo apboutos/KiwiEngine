@@ -1,21 +1,26 @@
 package com.engine.kiwi.model;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+
+import static com.engine.kiwi.config.Constants.CELL_HEIGHT;
+import static com.engine.kiwi.config.Constants.CELL_WIDTH;
 
 public class EntityGrid {
 
     private final String[][] grid;
-    private final int pixelsPerHeight;
-    private final int pixelsPerWidth;
     private final int width;
     private final int height;
+    private final Map<String,Entity> entities;
 
-    public EntityGrid(int width, int height, int pixelsPerWidth, int pixelsPerHeight) {
+    public EntityGrid(int width, int height) {
         this.grid = new String[width][height];
-        this.pixelsPerWidth = pixelsPerWidth;
-        this.pixelsPerHeight = pixelsPerHeight;
         this.width = width;
         this.height = height;
+        this.entities = new HashMap<>();
     }
 
     public void addEntity(Entity entity) {
@@ -33,13 +38,21 @@ public class EntityGrid {
                 grid[i][j] = entity.id();
             }
         }
-    }
-
-    public String[][] getGrid() {
-        return this.grid;
+        entities.put(entity.id(),entity);
     }
 
     public String getCell(int positionX, int positionY) {
         return this.grid[positionX][positionY];
+    }
+
+    public void draw(SpriteBatch spriteBatch) {
+       for (int i=0; i<this.width; i++) {
+           for (int j=this.width -1; j>=0; j--) {
+               final Entity entity = entities.get(grid[i][j]);
+               if (entity != null) {
+                   spriteBatch.draw(entity.texture(),entity.positionX() * CELL_WIDTH, entity.positionY() * CELL_HEIGHT);
+               }
+           }
+       }
     }
 }
