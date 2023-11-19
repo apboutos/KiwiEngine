@@ -2,14 +2,12 @@ package com.engine.kiwi.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 class EntityGridTest {
 
-    @InjectMocks
     private EntityGrid classUnderTest;
 
     @BeforeEach
@@ -18,7 +16,7 @@ class EntityGridTest {
     }
 
     @Test
-    void test() {
+    void shouldReturnEntitiesInCorrectCells() {
 
         classUnderTest.addEntity(new Entity("entity1",1,2,0,0));
 

@@ -65,4 +65,8 @@ project(":core") {
         testImplementation "org.mockito:mockito-core:$mockitoVersion"
         testImplementation "org.assertj:assertj-core:$assertjVersion"
     }
+
+    test {
+        useJUnitPlatform()
+    }
 }
